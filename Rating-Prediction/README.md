@@ -1,4 +1,4 @@
-#Rating Prediction Model
+# Rating Prediction Model
 
 The input file contains the "Review" column, the **Prediction model** will predict the rating.
 
