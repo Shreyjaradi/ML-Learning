@@ -1,0 +1,34 @@
+[
+  {
+    "text": "good afternoon",
+    "intent": "greet",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.6995159983634949
+    }
+  },
+  {
+    "text": "have a nice day",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "deny",
+      "confidence": 0.6684472560882568
+    }
+  },
+  {
+    "text": "bye",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.693867564201355
+    }
+  },
+  {
+    "text": "checkin time",
+    "intent": "faq_checkout_timing",
+    "intent_prediction": {
+      "name": "faq_checkin_timing",
+      "confidence": 0.8535292148590088
+    }
+  }
+]

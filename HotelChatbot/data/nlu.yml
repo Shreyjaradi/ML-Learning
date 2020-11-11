@@ -1,0 +1,284 @@
+version: "2.0"
+
+nlu:
+- regex: number
+  examples: |
+    - \d
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - hello, welcome
+    - hey there
+    - let's go
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - helli
+    - helllo
+    - helloooooo
+    - heyyyyy
+
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+    - bye
+
+- intent: affirm
+  examples: |
+    - yes
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - affirmative
+    - ok
+    - okay
+    - great
+    - nice
+    - sure
+    - okay
+    - yes please
+    - excited
+    - superb
+    - too good
+
+
+- intent: deny
+  examples: |
+    - no
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - one more thing
+    - not at all
+    - i don't want 
+    - bye 
+    - deny
+    - not interested
+    - nothing
+    - have a nice day
+
+    
+
+- intent: book_room_req
+  examples : |
+    - i want to book a room
+    - i want to book a room for my stay
+    - i am looking for stay in your hotel
+    - book room 
+    - book room now 
+    - i am visiting delhi i would like to book a room
+    - book rooms
+    - book room for my stay
+    - book a room
+    - Book a room
+    - Book room
+    - Book rooms 
+    - can you book a room ?
+    - need a room
+
+
+- intent: book_room_selection
+  examples : |
+    - i want to book [3](number) room
+    - i am looking for [2](number) rooms 
+    - book [2](number) rooms 
+    - [2](number) rooms
+    - i want to book [1](number) room
+    - need [2](number) room to book
+    - [2](number) room
+    - [3](number) rooms
+    - i want to book [4](number) rooms
+    - [3](number)
+    - I want to book 2 rooms
+
+- intent : room_clean_request
+  examples : |
+    - i want to have my room cleaned
+    - could you send someone to clean my room?
+    - clean my room
+    - clean the room
+    - could you please send someone to clean the room?
+    
+
+- intent : room_clean_schedule_timings
+  examples : |
+    - could you send someone (after 2 hours)[time]
+    - schedule it (after 3 hours)[time]
+    - send him (after 2 hours)[time] later
+    - please send in (2 hours)[time]
+    - (after 2 hours)[time]
+    - (before end of the day)[time]
+    - in (afternoon)[time]
+    - in (morning)[time]
+    - (after lunch)[time]
+    - (after dinner)[time]
+    - send someone (after lunch)[time]
+    - send someone (after dinner)[time]
+
+    
+
+- intent : clean_room_now
+  examples: |
+    - i want to have my room cleaned right now 
+    - clean my room right away  
+    - clean my room ASAP
+    - clean room ASAP
+    - clean room as soon as possible
+    - send him now
+    - it is urgent
+    - required now
+    - now
+    - as soon as possible
+    - please send someone right now
+    - the requirement is urgent
+    -
+
+- intent: faq
+  examples : |
+    - what can i ask?
+    - how can you help me ?
+    - what you can do ?
+    - what sort of question i can ask to you?
+    - what are the frequently answered question? 
+    - faq
+    - FAQ
+
+- intent: faq_checkin_timing
+  examples : |
+    - what is the check-in time of a hotel?
+    - what is the checkin time of a hotel?
+    - what are your check-in time?
+    - what are your checkin time?
+    - what are the standard check-in?
+    - what are the standard checkin?
+    - At what time i can check-in
+    - At what time i can checkin
+    - checkin time
+    - what is the check in time ?
+    - Check-in time ?
+    - Checkin time ?
+    - when can i come to hotel ?
+    - what is the minimum age ?
+    - is there any minimum age for check-in?
+  
+- intent: faq_checkout_timing
+  examples : |
+    - what is the check-out time of a hotel?
+    - what is the checkout time of a hotel? 
+    - what are your check out time?
+    - what are the standard check-out?
+    - what are the standard checkout?
+    - At what time i can check-out
+    - At what time i can checkout
+    - checkin time
+    - what is the check out time ?
+    - Check-out time ?
+    - can i check-out late ?
+    - i want to late check out
+    - could you help me with late check out 
+    - i may not be able to check out on time
+    
+
+
+- intent: faq_cancel_reservation 
+  examples : |
+    - how do i cancel reservation?
+    - cancel reservation
+    - what should I do to cancel my reservation?
+    - what is the process to cancel the reservation
+    - cancel my reservation? 
+    - i want to cancel my hotel booking 
+
+- intent: faq_cancellation_policy 
+  examples : |
+    - what is the cancellation policy?
+    - cancel policy
+    - what should I do for cancelling the reservation?
+    - what is the cancellation policy process
+    - cancellation policy?
+    - is there any cancellation policy you guys offer?
+    - if i cancel the room bookings, what will i get ?
+    
+
+- intent: faq_restaurant_availability 
+  examples : |
+    - does the hotel have restaurant ?
+    - is there any restaurant?
+    - do i need to go outside to have breakfast?
+    - is there any restaurant nearby?
+    - do you have restaurant?
+    - restaurant?
+    - any restaurant?
+
+
+- intent: faq_breakfast_availability
+  examples : |
+    - does the hotel offer breakfast ?
+    - do the hotel offer breakfast? 
+    - do you guys offer breakfast?
+    - any breakfast offer?
+    - is there any offer?
+    - breakfast is free or not ?
+    - do you include free breakfast?
+
+
+- intent: faq_breakfast_time
+  examples: |
+    - can you specify the time for the breakfast?
+    - at what time will you serve the breakfast?
+    - what is the time for the breakfast?
+    - breakfast timings ?
+    - tell me your breakfast timings
+    - timing for breakfast
+    - when do you serve breakfast?
+    - when you server breakfast
+    - when can i have breakfast? 
+
+- intent: faq_restaurant_timings
+  examples : | 
+    - is restaurant open now ?
+    - is restaurant open all the time
+    - what is the timings of restaurant?
+    - is restaurant open 24 hours ?
+    - restaurant time
+    - Restaurant time
+    - what are the timings of your restaurant?
+    - restaurant is still open ?
+    - restaurant opens at ?
+    - when do restaurant close ?
+
+- synonym: room
+    - rooms
+    - Rooms
+    - Room
+
+- synonym: restaurant
+    - Restaurant
+    - restaurants
+    - Restaurants
+    - restaurent
+    - restaurent
+    - cafe
+    - restauree
+
+# - regex: number
+#   examples: |
+#     - [0-9]{1}

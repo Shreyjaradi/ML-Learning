@@ -1,0 +1,332 @@
+version: "2.0"
+
+stories:
+
+- story:  book room affirm path --> asks the user for number of rooms and its type (simple or deluxe)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: book_room_req            #I want to book a room
+  - action: utter_book_room_req      # How many rooms would you like to book? # - action: form_book_room 
+  - intent: book_room_selection      #2 rooms   
+    entities:
+    - number: "2"
+  - action: utter_book_room_selection # What type of room ?
+  - intent: type_rooms
+    entities:
+    - room_type: "Simple"
+  - slot_was_set:
+    - room_type: "Simple"
+  - action: action_select_room
+  - action: utter_is_it_all
+  - intent: affirm
+  - action: utter_goodbye
+
+- story:  book room deny path --> asks the user for number of rooms and its type (simple or deluxe)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: book_room_req            #I want to book a room
+  - action: utter_book_room_req      # How many rooms would you like to book? # - action: form_book_room 
+  - intent: book_room_selection      #2 rooms   
+    entities:
+    - number: "3"
+  - action: utter_book_room_selection # What type of room ?
+  - intent: type_rooms
+    entities:
+    - room_type: "Deluxe"
+  - slot_was_set:
+    - room_type: "Deluxe"
+  - action: action_select_room
+  - action: utter_is_it_all
+  - intent: deny
+  - action: utter_deny_message
+
+
+
+- story:  book number room path affirm 1 --> asks the user for type of room given that the number of rooms stated by user = 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: book_room_selection      #2 rooms   
+    entities:
+    - number: "3"
+  - action: utter_book_room_selection # What type of room ?
+  - intent: type_rooms
+    entities:
+    - room_type: "Deluxe"
+  - slot_was_set:
+    - room_type: "Deluxe"
+  - action: action_select_room
+  - action: utter_is_it_all
+  - intent: affirm
+  - action: utter_goodbye
+
+
+- story:  book number room path deny 1 --> asks the user for type of room given that the number of rooms stated by user 
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: book_room_selection      #2 rooms   
+    entities:
+    - number: "3"
+  - action: utter_book_room_selection # What type of room ?
+  - intent: type_rooms
+    entities:
+    - room_type: "Deluxe"
+  - slot_was_set:
+    - room_type: "Deluxe"
+  - action: action_select_room
+  - action: utter_is_it_all
+  - intent: deny
+  - action: utter_deny_message
+
+- story: room clean now affirm 
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: room_clean_request
+  - action: utter_room_clean_req
+  - intent: clean_room_now
+  - action: utter_room_clean_now
+  - action: utter_is_it_all
+  - intent: affirm
+  - action: utter_goodbye
+
+- story: room clean now deny 
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: room_clean_request
+  - action: utter_room_clean_req
+  - intent: clean_room_now
+  - action: utter_room_clean_now
+  - action: utter_is_it_all
+  - intent: deny
+  - action: utter_deny_message
+
+
+
+- story: room cleaning schedule affirm steps
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: room_clean_request
+  - action: utter_room_clean_req
+  - intent: room_clean_schedule_timings
+    entities:
+    - time: "after 2 hours"
+  - action: action_relative_time
+  - action: utter_is_it_all
+  - intent: affirm
+  - action: utter_goodbye
+
+
+- story: room cleaning schedule deny steps
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: room_clean_request
+  - action: utter_room_clean_req
+  - intent: room_clean_schedule_timings
+    entities:
+    - time: "after 2 hours"
+  - action: action_relative_time
+  - intent: deny
+  - action: utter_deny_message
+
+
+- story: faqs
+  steps:
+  - intent: faq
+  - action: utter_faq
+
+
+- story:  faqs with greetings
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: faq
+  - action: utter_faq
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: proper checkin timing info greetings affirm
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: faq_checkin_timing
+  - action: utter_faq_checkin_timing
+  - action: utter_is_it_all
+  - intent: affirm
+  - action: utter_goodbye
+
+- story: checkin timing info deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: faq_checkin_timing
+  - action: utter_faq_checkin_timing
+  - action: utter_is_it_all
+  - intent: deny
+  - action: utter_deny_message
+
+- story: checkout timing info with greetings affirm
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: faq_checkout_timing
+  - action: utter_faq_checkout_timing
+  - action: utter_is_it_all
+  - intent: affirm
+  - action: utter_goodbye
+
+
+- story:  checkout timing info deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: faq_checkout_timing
+  - action: utter_faq_checkout_timing
+  - action: utter_is_it_all
+  - intent: deny
+  - action: utter_deny_message
+
+- story: check how to cancel reservation affirm
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: faq_cancel_reservation
+  - action: utter_faq_cancel_reservation
+  - action: utter_is_it_all
+  - intent: affirm
+  - action: utter_goodbye
+
+- story: check how to cancel reservation deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: faq_cancel_reservation
+  - action: utter_faq_cancel_reservation
+  - action: utter_is_it_all
+  - intent: deny
+  - action: utter_deny_message
+
+- story: check cancelation policy affirm
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: faq_cancellation_policy
+  - action: utter_faq_cancellation_policy
+  - action: utter_is_it_all
+  - intent: affirm
+  - action: utter_goodbye
+
+
+- story: check cancelation policy deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: faq_cancellation_policy
+  - action: utter_faq_cancellation_policy
+  - action: utter_is_it_all
+  - intent: deny
+  - action: utter_deny_message
+
+- story: check faq restaurant affirm
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: faq_restaurant_availability
+  - action: utter_faq_restaurant_availability
+  - action: utter_is_it_all
+  - intent: affirm
+  - action: utter_goodbye
+
+- story: faq restaurant deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: faq_restaurant_availability
+  - action: utter_faq_restaurant_availability
+  - action: utter_is_it_all
+  - intent: deny
+  - action: utter_deny_message
+
+- story: check faq breakfast available affirm
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: faq_breakfast_availability
+  - action: utter_faq_breakfast_availability
+  - action: utter_is_it_all
+  - intent: affirm
+  - action: utter_goodbye
+
+- story: faq breakfast available deny
+  steps:
+  - intent: greet
+  - action: utter_greet  
+  - intent: faq_breakfast_availability
+  - action: utter_faq_restaurant_availability
+  - action: utter_is_it_all
+  - intent: deny
+  - action: utter_deny_message
+
+- story: check  faq breakfast timings affirm
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: faq_breakfast_availability
+  - action: utter_faq_restaurant_availability
+  - intent: faq_breakfast_time
+  - action: utter_faq_breakfast_time
+  - action: utter_is_it_all
+  - intent: affirm
+  - action: utter_goodbye
+
+- story: check faq breakfast timings deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: faq_breakfast_availability
+  - action: utter_faq_restaurant_availability
+  - intent: faq_breakfast_time
+  - action: utter_faq_breakfast_time
+  - action: utter_is_it_all
+  - intent: deny
+  - action: utter_deny_message 
+
+- story: check faq restaurant timings with greetings affirm
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: faq_restaurant_timings
+  - action: utter_faq_restaurant_timings
+  - intent: faq_breakfast_time
+  - action: utter_faq_breakfast_time
+  - action: utter_is_it_all
+  - intent: affirm
+  - action: utter_goodbye
+  
+
+- story: check faq for restaurant timings deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: faq_restaurant_timings
+  - action: utter_faq_restaurant_timings
+  - intent: deny
+  - action: utter_deny_message 
+
+
+
+# - story: happy path
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_great
+#   - action: utter_happy
+
+
+

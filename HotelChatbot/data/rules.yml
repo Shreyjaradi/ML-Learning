@@ -1,0 +1,46 @@
+version: "2.0"
+
+rules:
+
+  # - rule: room book activate form 
+  #   steps:
+  #   - intent: book_room_selection      #2 rooms 
+  #   - action: form_book_room
+  #   - active_loop: form_book_room  
+  #   - action: utter_book_room_selection # What type of room ?
+  #   - action: form_book_room
+  #   - active_loop: form_book_room
+    
+
+  # - rule: room book deactivate form
+  #   condition:
+  #   - active_loop: form_book_room
+  #   steps:
+  #   - active_loop: form_book_room
+  #   - active_loop: null
+  #   - slot_was_set:
+  #     - number: null
+  #     - room_type: null
+  #   - action: action_select_room   
+
+
+
+
+
+
+
+# - rule: book number room path affirm 1 --> asks the user for type of room given that the number of rooms stated by user = 1
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+  
+#   - intent: book_room_selection
+#     entities:
+#     - number: 3 
+#   - slot_was_set:
+#     - number: 3
+#   - action: form_book_room
+  
+#   - action: utter_is_it_all
+#   - intent: affirm
+#   - action: utter_goodbye

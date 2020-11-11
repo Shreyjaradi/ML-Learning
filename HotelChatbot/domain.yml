@@ -1,0 +1,145 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - book_room_req
+  - book_room_selection
+  - type_rooms
+  - room_clean_request
+  - room_clean_schedule_timings:
+      use_entities:
+        - time
+      ignore_entities:
+        - number
+  - clean_room_now
+  - faq
+  - faq_checkin_timing:
+      triggers: action_checkin_time
+  - faq_checkout_timing:
+      triggers: action_checkout_time
+  - faq_cancel_reservation:
+      triggers: action_cancel_reservation
+  - faq_cancellation_policy:
+      triggers: action_cancellation_policy
+  - faq_restaurant_availability:
+      triggers: action_restaurant_availability
+  - faq_breakfast_availability:
+      triggers: action_breakfast_availability
+  - faq_breakfast_time:
+      triggers: action_breakfast_time
+  - faq_restaurant_timings:
+      triggers: action_restaurant_timings
+
+entities:
+  - number
+  - room_type
+  - time
+
+slots:
+  number:
+    type: any
+  room_type:
+    type: categorical
+    values:
+    - Simple
+    - Deluxe
+  time:
+    type: any
+
+
+responses:
+  utter_greet:
+  - text: Hello Namaste!!"
+
+  utter_goodbye:
+  - text: Bye
+  
+  utter_book_room_req:
+  - text: How many rooms would you like to book?
+  
+  utter_book_room_selection:
+  - text: What type of room would you want to book?
+    buttons:
+      - title: Simple
+        payload: '/type_rooms{{"room_type": "Simple"}}'
+      - title: Deluxe
+        payload: '/type_rooms{{"room_type": "Deluxe"}}'
+  
+  utter_room_submit:
+    - text: You have chosen to book {number} {room_type} rooms
+
+  utter_room_clean_req:
+  - text: When should i arrange for a cleaning?
+
+  utter_room_clean_schedule_timings:
+  - text: Sure, I have scheduled a cleaning at {time}. #Time needs to add i think entity will be adding here
+
+  utter_room_clean_now:
+  - text: Someone is being sent to your room right away.
+
+  utter_faq:
+  - text: "I can help you with the following points: - \n - Check-In Timings \n - Check-out Timings \n - Cancel Reservation \n - Cancellation Policy \n - Restaurant \n - Breakfast Availability \n - Breakfast timings \n - Restaurant Timings \n - Schedule Cleaning \n - Book a Room"
+
+  utter_faq_checkin_timing:
+  - text: Check-in time starts at 4 PM. Minimum check-in age is 21. Please contact the reception for early check-in requests.
+
+  utter_faq_checkout_timing:
+  - text: Check-out time is 11 AM. Please contact the reception for late checkout requests.
+
+  utter_faq_cancel_reservation:
+  - text: To cancel a reservation, select the “Reservations” link from the homepage.
+  - text: On the Reservations page, under the heading ‘View, Change or Cancel a Reservation,’ enter your confirmation number, and either the last name on the reservation or the last four digits of the credit card used to make the reservation.
+  
+
+  utter_faq_cancellation_policy:
+  - text: The booking deposit is refundable if the cancellation occurs at least 15 days before arrival. For cancellations made after this limit, a penalty will be imposed based on the cancellation policy.
+
+  utter_faq_restaurant_availability:
+  - text: Yes, the hotel has a restaurant called the Zephyr Bar. With our menu we strive to reflect the historic art and the spirit of our neighborhood by offering a glimpse into what makes our area unique.
+  
+  utter_faq_breakfast_availability:
+  - text: The hotel provides its guests with a free made-to-order breakfast each morning.
+  
+  utter_faq_breakfast_time:
+  - text: Monday through Friday breakfast is 6 am to 9 am. On Saturday and Sunday, we are open from 7 am to 10:30 am.
+
+  utter_faq_restaurant_timings:
+  - text: Our restaurant serves a dazzling 24-hour menu.
+ 
+  utter_is_it_all:
+  - text: Would that be all?
+  
+  utter_deny_message:
+  - text: How can I help you?
+
+actions:
+  - action_checkin_time
+  - action_checkout_time
+  - action_cancel_reservation
+  - action_cancellation_policy
+  - action_restaurant_availability
+  - action_breakfast_availability
+  - action_breakfast_time
+  - action_restaurant_timings
+  - action_select_room
+  - action_relative_time
+
+# forms:
+#   form_book_room:
+#     number:
+#       - type: from_entity
+#         entity: number
+#     room_type:
+#       - type: from_entity
+#         entity: room_type
+#   form_book_room_number:
+#     number:
+#     - type: any
+#       entity: number
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

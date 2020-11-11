@@ -1,0 +1,44 @@
+[
+  {
+    "text": "I want to book 2 rooms",
+    "entities": [],
+    "predicted_entities": [
+      {
+        "entity": "number",
+        "start": 15,
+        "end": 16,
+        "confidence_entity": 0.5872909426689148,
+        "value": "2",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "(after 2 hours)[time]",
+    "entities": [],
+    "predicted_entities": [
+      {
+        "entity": "number",
+        "start": 7,
+        "end": 8,
+        "confidence_entity": 0.5901998281478882,
+        "value": "2",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "is restaurant open 24 hours ?",
+    "entities": [],
+    "predicted_entities": [
+      {
+        "entity": "number",
+        "start": 19,
+        "end": 21,
+        "confidence_entity": 0.5166485905647278,
+        "value": "24",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  }
+]
